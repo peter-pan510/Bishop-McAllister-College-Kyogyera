@@ -13,7 +13,7 @@ window.BMCK = {
   motto: "Soaring to Great Heights",
   admissionsEmail: "admissions@bmck-kyogyera.example", // TODO: replace with the real admissions email
   generalEmail: "info@bmck-kyogyera.example",          // TODO: replace with the real office email
-  phone: "",        // TODO: e.g. "+256 700 000 000"
+  phone: "+256 780 623329", // Head Teacher / school line; Deputy: +256 702 481663
   address: "Kyogyera, Ankole Sub-region, Western Uganda", // TODO: add full P.O. Box / physical address
   facebook: "https://www.facebook.com/bishopmcallister/",
   mapsQuery: "https://www.google.com/maps/search/?api=1&query=Bishop+McAllister+College+Kyogyera+Uganda"
@@ -52,7 +52,7 @@ function hydrateConfig(){
     if (el.tagName === "A") {
       if (key === "admissionsEmail" || key === "generalEmail") el.href = "mailto:" + val;
       if (key === "phone") el.href = "tel:" + val.replace(/\s+/g, "");
-      if (key === "facebook" || key === "mapsQuery") el.href = val;
+      if (key === "facebook" || key === "mapsQuery") { el.href = val; return; } // keep the link's own label
     }
     el.textContent = val;
   });
