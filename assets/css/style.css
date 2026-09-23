@@ -241,7 +241,7 @@ p{margin:0 0 1em;color:var(--text-soft);max-width:65ch;}
   .brand-text span{display:none;}
 }
 @media (max-width:560px){
-  .nav-cta .btn span{display:none;}
+  .nav-cta .btn{padding:.6em 1.1em; font-size:.85rem;}
 }
 
 .skip-link{
