@@ -798,10 +798,3 @@ tr:last-child td{border-bottom:none;}
 }
 @media (max-width:560px){ .mosaic .shot.m-wide{grid-column:span 2;} }
 
-/* ---------- school crest ----------
-   The crest artwork is see-through, so every copy of it gets a darker disc
-   behind its circle to make it stand out. */
-img[src*="bmck-crest"]{
-  background:
-    radial-gradient(ellipse 47% 41% at 50% 43.5%, rgba(4,12,28,.82) 0 88%, rgba(4,12,28,0) 100%);
-}
