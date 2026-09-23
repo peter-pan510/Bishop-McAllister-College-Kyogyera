@@ -120,7 +120,7 @@ function initCounters(){
       const p = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - p, 3);
       const val = Math.round(target * eased);
-      el.textContent = val.toLocaleString() + suffix;
+      el.textContent = (el.hasAttribute("data-plain") ? String(val) : val.toLocaleString()) + suffix; // years: no comma
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
