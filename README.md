@@ -1,101 +1,59 @@
-# Bishop McAllister College Kyogyera &mdash; Website
+# Bishop McAllister College Kyogyera
 
-A front-end-only, multi-page website for Bishop McAllister College Kyogyera (BMCK),
-an Anglican boarding secondary school and seminary in Kyogyera, western Uganda.
-Plain HTML, CSS and JavaScript &mdash; no build step, no backend, no dependencies.
-It can be deployed to any static host (GitHub Pages, Netlify, Vercel, cPanel, etc.)
-by uploading these files as they are.
+The official website of **Bishop McAllister College Kyogyera (BMCK)**, an Anglican
+co-educational boarding secondary school and seminary in Kyogyera, western Uganda,
+founded in 1983 by the Anglican Diocese of West Ankole.
+
+**Live site:** https://peter-pan510.github.io/Bishop-McAllister-College-Kyogyera/
+
+*Soaring to Great Heights* (Isaiah 40:31)
+
+---
 
 ## Pages
 
-| File | Page |
+| Page | Description |
 |---|---|
-| `index.html` | Home |
-| `about.html` | Our Story &mdash; history, crest symbolism, mission/vision, impact |
-| `academics.html` | O-Level, A-Level, seminary track, subjects, co-curricular |
-| `admissions.html` | Requirements, how to apply, FAQ, inquiry form |
-| `gallery.html` | Photo gallery with category filters + lightbox |
-| `memories.html` | Memory Lane &mdash; year-by-year alumni memories with real photos and a full-screen photo viewer |
-| `staff.html` | Rector, leadership team, teaching departments |
-| `news.html` | School life / events calendar |
-| `contact.html` | Contact details, map link, general inquiry form |
+| [Home](index.html) | Welcome, highlights and quick links |
+| [About](about.html) | History, milestones, crest and motto, mission and vision |
+| [Academics](academics.html) | O-Level, A-Level, seminary studies and co-curricular life |
+| [Admissions](admissions.html) | Requirements, how to apply, FAQs and enquiry form |
+| [Gallery](gallery.html) | Photos of campus and school life |
+| [Memories](memories.html) | Memory Lane for Old Boys and Old Girls, year by year |
+| [Staff](staff.html) | The Rector and the school management team |
+| [News](news.html) | School events and calendar |
+| [Contact](contact.html) | Phone, location and enquiry form |
 
-Shared code lives in `assets/css/style.css` and `assets/js/main.js`, so editing
-one thing (e.g. the navigation, the footer, the colour palette) usually means
-editing it in every page's copy of that markup &mdash; there's no templating engine,
-by design, so the site needs nothing but a web server to run.
+## Features
 
-## Before you go live &mdash; things to fill in
+- Responsive design for phones, tablets and desktops
+- Automatic light and dark mode
+- Memory Lane: a photo timeline with a full-screen viewer that works with keyboard and swipe
+- Enquiry and share-a-memory forms that open a ready-to-send email
+- Fast loading: optimised WebP images, no frameworks and no build step
 
-Real information was used wherever it could be verified (founding year 1983,
-the Anglican Diocese of West Ankole, the Rector's name, the 2007&ndash;2021 facility
-timeline, the motto and crest). Everything below is a clearly-marked placeholder
-that still needs the school's real details:
+## Built with
 
-1. **Contact details.** Open `assets/js/main.js` and fill in the `window.BMCK`
-   config block at the top: `admissionsEmail`, `generalEmail`, `phone`. These
-   values automatically populate every `data-cfg="..."` element across all
-   pages (currently shown as `[Add phone number]` / `[Add office email]` etc.
-   in the footer and contact/admissions pages).
-2. **Physical address.** Update the `address` value in the same config block,
-   and the matching text in each page's footer (`Kyogyera, Ankole Sub-region...`).
-3. **Photos.** Every image tile (gallery, home preview, news cards) is a
-   deliberately-styled placeholder (`.ph-photo`), not a real photo, so nothing
-   pretends to show the actual campus. To swap one in: replace the `<div class="ph-photo">...</div>`
-   block with an `<img>` tag pointing at a real photo saved under
-   `assets/images/gallery/`. Keep the `data-caption` attribute if you want the
-   lightbox caption to keep working on `gallery.html`.
-4. **Staff names & photos.** `staff.html` has a full leadership grid with
-   `[Add Name]` placeholders and generic avatar icons &mdash; the Rector (Rev.
-   Canon Paul Jeffries) is the only name currently filled in. Replace the
-   `<b>[Add Name]</b>` text and swap the `.avatar` div for an `<img>` once you
-   have real photos.
-5. **Fee structure.** Deliberately left as "contact the Bursar's office" rather
-   than invented numbers &mdash; add real fees to the card in `admissions.html`
-   once confirmed for the academic year.
-6. **News & events.** `news.html` ships with recurring, generic event types
-   (Term Opening Day, Prize-Giving Day, etc.) rather than invented specific
-   headlines. Replace with real dated posts as they happen.
-7. **Subjects & term dates.** The subject lists in `academics.html` and the
-   term dates in `admissions.html` reflect typical Uganda secondary-school
-   patterns &mdash; confirm exact current offerings with the academic office.
+HTML, CSS and JavaScript. It is hosted on GitHub Pages.
 
-Everything else (the Facebook link, the crest artwork, the founding history,
-the impact figures) is sourced from the school's public presence and should
-not need editing.
-
-## Memory Lane photos
-
-`memories.html` uses real photos stored in `assets/images/memories/`, resized to
-at most 1400px and converted to WebP. The small copies in `thumbs/` are used
-only for the photo collage at the top of the page. To add a photo, save it as a
-`.webp` file there and copy one of the `<button class="shot">` blocks. Change its
-`src`, `alt` and `data-caption`. The photo viewer (`assets/js/memories.js`) finds
-every photo on the page automatically. Its CSS is at the end of `style.css`
-under *Memory Lane*.
-
-## Crest artwork
-
-`assets/images/bmck-crest.webp` and `bmck-crest-square.webp` are the crest you
-provided, cropped and compressed for the web. The favicon files
-(`favicon-32.png`, `favicon-64.png`, `favicon-192.png`, `favicon-512.png`) were
-generated from the same artwork.
-
-## Running it locally
-
-No build tools needed &mdash; any static file server works:
-
-```bash
-python3 -m http.server 8080
-# then open http://localhost:8080
+```
+├── index.html, about.html, … memories.html
+└── assets/
+    ├── css/style.css      shared styles
+    ├── js/main.js         site behaviour and school contact details
+    ├── js/memories.js     Memory Lane photo viewer
+    └── images/            crest, favicons and photographs
 ```
 
-## Deploying
+## Author
 
-Upload the whole folder as-is to any static host:
+Designed and developed by **Abaho Peterson** ([@peter-pan510](https://github.com/peter-pan510)).
 
-- **GitHub Pages** &mdash; push to a repo, enable Pages on the `main` branch.
-- **Netlify / Vercel** &mdash; drag-and-drop the folder, or connect the repo.
-- **Any shared host / cPanel** &mdash; upload via FTP into `public_html`.
+## Copyright
 
-No environment variables, no database, no server-side code required.
+© 2026 Abaho Peterson. All rights reserved. This is not open-source software.
+No part of this website may be copied, modified or reused without written
+permission. See [LICENSE](LICENSE).
+
+The name, crest and photographs of Bishop McAllister College Kyogyera belong to
+the school and their respective owners.
