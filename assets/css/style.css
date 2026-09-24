@@ -824,3 +824,7 @@ tr:last-child td{border-bottom:none;}
 .photo-bg .badge-figure{border-color:rgba(255,255,255,.18); box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
 .hero .btn-outline{color:#fff; border-color:rgba(255,255,255,.55);}
 .hero .btn-outline:hover{background:#fff; color:var(--navy-900); border-color:#fff;}
+.quote-avatar:has(img){width:64px;height:64px;box-shadow:0 0 0 2px var(--gold-500);}
+.section-navy .quote-slide p{color:#fff;}
+.section-navy .quote-who b{color:#fff;}
+.section-navy .quote-who span span{color:#a9bbd8;}
