@@ -804,3 +804,23 @@ tr:last-child td{border-bottom:none;}
 
 /* gallery tiles that open in the photo viewer */
 .gallery-item .shot{aspect-ratio:4/3;}
+
+/* section with a faint photo behind it under a navy wash, like the Memories hero (Home banner) */
+.photo-bg{position:relative; overflow:hidden; isolation:isolate; background:var(--navy-900); color:#fff;}
+.photo-bg::before{
+  content:""; position:absolute; inset:-3%; z-index:-2;
+  background:url('../images/campus-aerial.webp') center/cover no-repeat;
+  filter:grayscale(.35) sepia(.25); opacity:.55; transform:scale(1.04);
+}
+.photo-bg::after{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(80% 90% at 20% 50%, rgba(10,31,61,.9), rgba(10,31,61,.45) 75%),
+    linear-gradient(180deg, rgba(10,31,61,.35), rgba(10,31,61,.8));
+}
+.photo-bg h2{color:#fff;}
+.photo-bg p{color:#d3def0;}
+.photo-bg .eyebrow{color:var(--gold-500);}
+.photo-bg .badge-figure{border-color:rgba(255,255,255,.18); box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
+.hero .btn-outline{color:#fff; border-color:rgba(255,255,255,.55);}
+.hero .btn-outline:hover{background:#fff; color:var(--navy-900); border-color:#fff;}
