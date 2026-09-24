@@ -304,18 +304,55 @@ p{margin:0 0 1em;color:var(--text-soft);max-width:65ch;}
 
 /* ---------- stats ---------- */
 .stat-strip{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-  background:var(--border); border:1px solid var(--border); border-radius:var(--radius-lg);
-  overflow:hidden; margin-top:clamp(-64px,-6vw,-48px); position:relative; z-index:3;
-  box-shadow:var(--shadow-lg);
+  display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:clamp(-64px,-6vw,-48px); position:relative; z-index:3;
 }
-.stat{background:var(--surface-1); padding:26px 18px; text-align:center;}
+.stat{
+  position:relative; overflow:hidden; text-align:center;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:24px 16px 22px; box-shadow:var(--shadow-md);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
+}
+.stat::before{ /* gold accent that grows on hover */
+  content:""; position:absolute; top:0; left:50%; width:36px; height:3px; border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,var(--gold-500),var(--gold-600)); transform:translateX(-50%);
+  transition:width .35s ease;
+}
+.stat::after{ /* soft glow in the corner */
+  content:""; position:absolute; right:-40px; top:-40px; width:120px; height:120px; border-radius:50%;
+  background:radial-gradient(circle, rgba(231,165,46,.18), transparent 70%);
+  opacity:0; transition:opacity .35s ease;
+}
+.stat:hover{transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:color-mix(in srgb, var(--accent) 45%, var(--border));}
+.stat:hover::before{width:100%;}
+.stat:hover::after{opacity:1;}
+.stat-icon{
+  width:44px; height:44px; border-radius:12px; margin-bottom:12px;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--blue-100); color:var(--brand);
+  transition:transform .35s cubic-bezier(.3,1.6,.5,1), background-color .3s ease, color .3s ease;
+}
+.stat-icon svg{width:22px; height:22px;}
+.stat:hover .stat-icon{transform:scale(1.12) rotate(-6deg); background:var(--gold-500); color:var(--navy-900);}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .stat-icon{background:rgba(91,147,222,.16);}}
+:root[data-theme="dark"] .stat-icon{background:rgba(91,147,222,.16);}
 .stat b{
-  display:block; font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.3rem);
+  display:block; font-family:var(--font-display); font-size:clamp(1.6rem,3vw,2.3rem); line-height:1.1;
   color:var(--brand-strong); font-variant-numeric:tabular-nums; letter-spacing:-.01em;
 }
-.stat span{font-size:.82rem; color:var(--text-mute); letter-spacing:.03em;}
-@media (max-width:760px){.stat-strip{grid-template-columns:repeat(2,1fr);} }
+.stat span{font-size:.82rem; color:var(--text-mute); letter-spacing:.03em; margin-top:.35em;}
+/* cards rise in one after another when the strip scrolls into view */
+@media (prefers-reduced-motion: no-preference){
+  .stat-strip.reveal{opacity:1; transform:none;}
+  .stat-strip .stat{opacity:0; transform:translateY(22px);}
+  .stat-strip.is-visible .stat{
+    opacity:1; transform:none;
+    transition:opacity .6s ease calc(var(--i,0)*120ms), transform .6s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*120ms), box-shadow .3s ease, border-color .3s ease;
+  }
+  .stat-strip.is-visible .stat:hover{transform:translateY(-6px); transition-delay:0s;}
+}
+@media (max-width:760px){.stat-strip{grid-template-columns:repeat(2,1fr); gap:12px;} .stat{padding:20px 12px;}}
 
 /* ---------- grids & cards ---------- */
 .grid{display:grid; gap:24px;}
