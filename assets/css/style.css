@@ -875,7 +875,7 @@ tr:last-child td{border-bottom:none;}
   display:flex; align-items:flex-end; clip-path:inset(0); color:#fff;
 }
 .rw-photo{
-  position:fixed; inset:0; z-index:-1;
+  position:fixed; inset:0; height:100lvh; z-index:-1;
   background:url('../images/school-life/assembly-under-trees.webp') 52% 60%/cover no-repeat;
 }
 .reveal-window::before{ /* darken each window's lower half so the caption always reads */
@@ -887,3 +887,27 @@ tr:last-child td{border-bottom:none;}
 .rw-caption p{color:#e3eaf6; font-size:1.08rem; margin:0; text-shadow:0 1px 10px rgba(0,0,0,.5);}
 .rw-caption .eyebrow{color:var(--gold-500);}
 .rw-caption .eyebrow::before{background:var(--gold-500);}
+
+/* ==========================================================================
+   Phone & tablet stability
+   ========================================================================== */
+/* no sideways wobble: clip overflow on the root (phones ignore it on body alone)
+   and stop the sideways rubber-band bounce */
+html,body{overflow-x:hidden; overscroll-behavior-x:none;}
+@supports (overflow:clip){ html,body{overflow-x:clip;} }
+body{width:100%; max-width:100%; position:relative;}
+img,svg,video{max-width:100%;}
+
+/* header always on top, on its own layer */
+.site-header{z-index:1000; transform:translateZ(0);}
+.nav-links{z-index:999;}
+
+/* touch screens: show the photo windows as normal photos (no fixed layer),
+   which phones redraw smoothly and never paint over the header */
+@media (hover:none), (max-width:900px){
+  .reveal-window{clip-path:none; overflow:hidden; min-height:clamp(300px,56vh,460px);}
+  .rw-photo{position:absolute; inset:0;}
+  .site-header{backdrop-filter:none; -webkit-backdrop-filter:none; background:var(--bg);}
+  .stat:hover,.card:hover,.photo-card:hover{transform:none;}
+}
+.rw-photo.rw-palm{background-image:url('../images/school-life/palm-sunday.webp'); background-position:50% 55%;}
