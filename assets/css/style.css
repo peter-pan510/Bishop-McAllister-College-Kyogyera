@@ -865,3 +865,25 @@ tr:last-child td{border-bottom:none;}
 .section-navy .quote-slide p{color:#fff;}
 .section-navy .quote-who b{color:#fff;}
 .section-navy .quote-who span span{color:#a9bbd8;}
+
+/* ---------- photo window (Home) ----------
+   The photo is fixed to the screen; clip-path turns each section into a
+   window onto it, so the sections around it scroll over and uncover it.
+   Works on phones too (unlike background-attachment:fixed). */
+.reveal-window{
+  position:relative; min-height:clamp(340px,62vh,560px);
+  display:flex; align-items:flex-end; clip-path:inset(0); color:#fff;
+}
+.rw-photo{
+  position:fixed; inset:0; z-index:-1;
+  background:url('../images/school-life/assembly-under-trees.webp') 52% 60%/cover no-repeat;
+}
+.reveal-window::before{ /* darken each window's lower half so the caption always reads */
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg, rgba(6,14,28,.1) 0%, rgba(6,14,28,.25) 40%, rgba(6,14,28,.85) 100%);
+}
+.rw-caption{position:relative; z-index:1; padding-block:48px;}
+.rw-caption h2{color:#fff; margin-bottom:.3em; text-shadow:0 2px 18px rgba(0,0,0,.4);}
+.rw-caption p{color:#e3eaf6; font-size:1.08rem; margin:0; text-shadow:0 1px 10px rgba(0,0,0,.5);}
+.rw-caption .eyebrow{color:var(--gold-500);}
+.rw-caption .eyebrow::before{background:var(--gold-500);}
