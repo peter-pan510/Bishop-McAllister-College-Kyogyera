@@ -18,17 +18,18 @@ founded in 1983 by the Anglican Diocese of West Ankole.
 | [About](about.html) | History, milestones, crest and motto, mission and vision |
 | [Academics](academics.html) | O-Level, A-Level, seminary studies and co-curricular life |
 | [Admissions](admissions.html) | Requirements, how to apply, FAQs and enquiry form |
-| [Gallery](gallery.html) | Photos of campus and school life |
+| [Gallery](gallery.html) | Photos of campus and school life, filtered by category |
 | [Memories](memories.html) | Memory Lane for Old Boys and Old Girls, year by year |
-| [Staff](staff.html) | The Rector and the school management team |
-| [News](news.html) | School events and calendar |
+| [Staff](staff.html) | The Rector, management team, teachers and teaching internships |
+| [News](news.html) | Latest stories from school life and the yearly calendar |
 | [Contact](contact.html) | Phone, location and enquiry form |
 
 ## Features
 
 - Responsive design for phones, tablets and desktops
 - Automatic light and dark mode
-- Memory Lane: a photo timeline with a full-screen viewer that works with keyboard and swipe
+- Memory Lane: a photo timeline for Old Boys and Old Girls
+- Full-screen photo viewer on the Gallery, News, Staff and Memories pages (keyboard and swipe)
 - Enquiry and share-a-memory forms that open a ready-to-send email
 - Fast loading: optimised WebP images, no frameworks and no build step
 
@@ -41,8 +42,10 @@ HTML, CSS and JavaScript. It is hosted on GitHub Pages.
 └── assets/
     ├── css/style.css      shared styles
     ├── js/main.js         site behaviour and school contact details
-    ├── js/memories.js     Memory Lane photo viewer
+    ├── js/memories.js     full-screen photo viewer
     └── images/            crest, favicons and photographs
+        ├── memories/      older photos used on Memory Lane
+        └── school-life/   recent photos of school life
 ```
 
 ## Author

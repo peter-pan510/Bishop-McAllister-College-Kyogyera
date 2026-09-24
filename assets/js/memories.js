@@ -1,13 +1,15 @@
 /* ==========================================================================
-   Memory Lane — full-size photo viewer
+   Full-size photo viewer (Memories, Gallery, News, Staff)
    Every <button class="shot"> with an <img> opens here. Browse with the
-   arrow buttons, the keyboard (← → Esc), or a swipe on phones.
+   arrow buttons, the keyboard (← → Esc), or a swipe on phones. Photos hidden
+   by the gallery filter are skipped.
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const box = document.querySelector("[data-memory-lightbox]");
-  const shots = [...document.querySelectorAll("button.shot")].filter(s => s.querySelector("img"));
-  if (!box || !shots.length) return;
+  const all = [...document.querySelectorAll("button.shot")].filter(s => s.querySelector("img"));
+  if (!box || !all.length) return;
+  let shots = all;
 
   const img = box.querySelector(".mlb-stage img");
   const cap = box.querySelector("[data-mlb-caption]");
@@ -39,7 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
     lastFocus && lastFocus.focus();
   }
 
-  shots.forEach((shot, i) => shot.addEventListener("click", () => open(i)));
+  all.forEach(shot => shot.addEventListener("click", () => {
+    shots = all.filter(s => s.offsetParent !== null);
+    open(shots.indexOf(shot));
+  }));
   box.querySelector(".mlb-close").addEventListener("click", close);
   box.querySelector(".mlb-prev").addEventListener("click", () => show(index - 1));
   box.querySelector(".mlb-next").addEventListener("click", () => show(index + 1));

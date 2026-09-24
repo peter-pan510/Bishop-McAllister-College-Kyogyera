@@ -801,3 +801,6 @@ tr:last-child td{border-bottom:none;}
 }
 @media (max-width:560px){ .mosaic .shot.m-wide{grid-column:span 2;} }
 
+
+/* gallery tiles that open in the photo viewer */
+.gallery-item .shot{aspect-ratio:4/3;}
