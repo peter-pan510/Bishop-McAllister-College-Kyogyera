@@ -107,31 +107,41 @@ function initReveal(){
   items.forEach(el => io.observe(el));
 }
 
-/* ---- animated stat counters ---- */
+/* ---- animated stat counters ----
+   The numbers count up every time the strip scrolls into view, and reset
+   when it leaves, so coming back replays it like the first visit. */
 function initCounters(){
   const stats = document.querySelectorAll("[data-count]");
   if (!stats.length) return;
+  const format = (el, val) =>
+    (el.hasAttribute("data-plain") ? String(val) : val.toLocaleString()) + (el.getAttribute("data-suffix") || ""); // years: no comma
   const animate = (el) => {
     const target = parseFloat(el.getAttribute("data-count"));
-    const suffix = el.getAttribute("data-suffix") || "";
     const duration = 1400;
     const start = performance.now();
+    const run = ++el._run || (el._run = 1); // a newer run cancels an older one
     const step = (now) => {
+      if (el._run !== run) return;
       const p = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - p, 3);
-      const val = Math.round(target * eased);
-      el.textContent = (el.hasAttribute("data-plain") ? String(val) : val.toLocaleString()) + suffix; // years: no comma
+      el.textContent = format(el, Math.round(target * eased));
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   };
+  const reset = (el) => { el._run = (el._run || 0) + 1; el.textContent = format(el, 0); };
   if (!("IntersectionObserver" in window)) { stats.forEach(animate); return; }
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { animate(entry.target); io.unobserve(entry.target); }
-    });
+    entries.forEach(entry => entry.isIntersecting ? animate(entry.target) : reset(entry.target));
   }, { threshold: 0.6 });
   stats.forEach(el => io.observe(el));
+
+  // replay the cards' staggered rise too
+  const strips = document.querySelectorAll(".stat-strip");
+  const so = new IntersectionObserver((entries) => {
+    entries.forEach(entry => entry.target.classList.toggle("is-visible", entry.isIntersecting));
+  }, { threshold: 0.2 });
+  strips.forEach(el => so.observe(el));
 }
 
 /* ---- quote / testimonial carousel ---- */
