@@ -542,6 +542,27 @@ p{margin:0 0 1em;color:var(--text-soft);max-width:65ch;}
 
 .dept-card{display:flex; gap:16px; align-items:flex-start;}
 
+/* teaching staff roster */
+.roster{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px;}
+@media (max-width:920px){.roster{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:600px){.roster{grid-template-columns:1fr; gap:10px;}}
+.roster-item{
+  display:flex; gap:14px; align-items:flex-start; padding:16px 18px;
+  background:var(--surface-1); border:1px solid var(--border); border-radius:var(--radius-md); box-shadow:var(--shadow-sm);
+}
+.roster-initials{
+  flex:none; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(150deg,var(--blue-500),var(--navy-900)); color:#fff; font-weight:800; font-size:.86rem; letter-spacing:.04em;
+}
+.roster-item > div{min-width:0;}
+.roster-item b{display:block; font-family:var(--font-display); font-size:1.02rem; line-height:1.25;}
+.roster-item b small{font-family:var(--font-body); font-size:.78rem; font-weight:700; color:var(--text-mute);}
+.roster-item .role{display:block; color:var(--brand); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; margin-top:.3em;}
+.roster-subjects{display:flex; flex-wrap:wrap; gap:6px; margin-top:.55em;}
+.roster-subjects span{font-size:.76rem; font-weight:600; padding:3px 9px; border-radius:999px; background:var(--blue-100); color:var(--brand-strong);}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .roster-subjects span{background:rgba(91,147,222,.16);}}
+:root[data-theme="dark"] .roster-subjects span{background:rgba(91,147,222,.16);}
+
 /* ---------- forms ---------- */
 .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
 @media (max-width:640px){.form-grid{grid-template-columns:1fr;}}
