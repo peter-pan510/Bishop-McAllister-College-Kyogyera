@@ -974,4 +974,5 @@ img,svg,video{max-width:100%;}
 .league-sub{margin-top:clamp(48px,7vw,88px);}
 .league-sub h3{font-size:clamp(1.5rem,3vw,2rem); margin-bottom:.45em;}
 .league-teams{margin-top:8px;}
+.league-portrait{aspect-ratio:2/3; max-width:260px; margin-top:1.4em;}
 @media (max-width:560px){ .league-teams .shot.third{grid-row:span 2;} }
