@@ -954,3 +954,24 @@ img,svg,video{max-width:100%;}
 /* sections that slide over the photo need a solid background */
 .curtain-content > .section:not(.section-alt):not(.section-navy){background:var(--bg);}
 .curtain-content > .section{box-shadow:0 -24px 48px -20px rgba(0,0,0,.35);}
+
+/* ---- Kyogyera League S01 (news) ---- */
+.league{position:relative; padding-top:0;}
+.kit-band{height:10px; margin-bottom:clamp(40px,6vw,72px);
+  background:linear-gradient(90deg,#d8262f 0 9.09%,#7a1f3d 0 18.18%,#ff4a1c 0 27.27%,#f47a20 0 36.36%,var(--gold-500) 0 45.45%,#9db3c7 0 54.54%,#1b2a6b 0 63.63%,#161616 0 72.72%,#5bb4e5 0 81.81%,#c9a23a 0 90.9%,var(--blue-600) 0 100%);}
+.kits-title{margin:clamp(40px,6vw,64px) 0 16px;}
+.kits{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(150px,40%),1fr)); gap:10px; margin-bottom:20px;}
+.kits li{position:relative; overflow:hidden; padding:14px 14px 12px 22px; border-radius:var(--radius-sm);
+  background:var(--surface-1); border:1px solid var(--border); box-shadow:var(--shadow-sm);}
+.kits li::before{content:""; position:absolute; left:0; top:0; bottom:0; width:8px; background:var(--kit,var(--border));}
+.kits b{display:block; font-family:var(--font-display); font-size:1rem; color:var(--brand-strong); line-height:1.2;}
+.kits span{display:block; font-size:.8rem; color:var(--text-mute); margin-top:.2em;}
+.kits li.champ{border-color:#ff4a1c; background:linear-gradient(135deg,rgba(255,74,28,.12),rgba(231,165,46,.14));}
+.kits li.champ span{color:#c2410c; font-weight:700;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kits li.champ span{color:#ff8a5c;}}
+:root[data-theme="dark"] .kits li.champ span{color:#ff8a5c;}
+.league .trophies div:first-child{background:linear-gradient(135deg,rgba(255,74,28,.14),rgba(231,165,46,.16));}
+.league-sub{margin-top:clamp(48px,7vw,88px);}
+.league-sub h3{font-size:clamp(1.5rem,3vw,2rem); margin-bottom:.45em;}
+.league-teams{margin-top:8px;}
+@media (max-width:560px){ .league-teams .shot.third{grid-row:span 2;} }
